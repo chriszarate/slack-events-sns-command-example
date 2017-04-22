@@ -1,0 +1,20 @@
+{
+  "name": "slack-events-sns-command-example",
+  "version": "1.0.0",
+  "description": "Example Slack bot command implementation on AWS Lambda (via SNS)",
+  "main": "index.js",
+  "scripts": {
+    "create": "claudia create --region us-east-1 --handler index.handler",
+    "update": "claudia update"
+  },
+  "author": "Chris Zarate",
+  "repository": "https://github.com/chriszarate/slack-events-sns-command-example",
+  "license": "ISC",
+  "files": [
+    "*",
+    ".env"
+  ],
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
