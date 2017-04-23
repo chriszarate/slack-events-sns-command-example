@@ -1,12 +1,10 @@
 // Extract and parse the JSON from Slack.
-function getSlackEvent(event, callback) {
+function getSlackEvent(lambdaEvent, callback) {
   try {
-    return JSON.parse(event.Records[0].Sns.Message);
+    return JSON.parse(lambdaEvent.Records[0].Sns.Message);
   } catch (error) {
-    callback('ERROR: unable to parse message from Slack');
+    return callback('ERROR: unable to parse message from slack');
   }
-
-  return {};
 }
 
 module.exports = getSlackEvent;

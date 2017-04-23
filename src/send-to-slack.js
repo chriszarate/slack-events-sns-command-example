@@ -5,11 +5,15 @@ const qs = require('querystring');
 
 // This function requires the original event since replying in the same channel
 // is the only supported flow.
-function sendToSlack(event, message, callback) {
-	const slackMessage = {
+function sendToSlack(slackEvent, reply, callback) {
+  if (!reply) {
+    return callback(null, 'OK: nothing to say');
+  }
+
+  const slackMessage = {
     token: process.env.SLACK_ACCESS_TOKEN,
-    channel: event.channel,
-    text: message,
+    channel: slackEvent.channel,
+    text: reply,
   };
   const requestUrl = `https://slack.com/api/chat.postMessage?${qs.stringify(slackMessage)}`;
 
